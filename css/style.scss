@@ -1,0 +1,348 @@
+@import "_variables";
+
+//Mixin
+@mixin transformar($transformar) {
+  -webkit-transform: $transformar;
+  -ms-transform: $transformar;
+  transform: $transformar;
+}
+
+//Map
+$map: (
+  main-color-one: rgb(255, 153, 236),
+  main-color-two: rgb(198, 255, 0),
+  alpha-color-one: rgba(255, 153, 236, 0.3),
+  alpha-color-two: rgba(198, 255, 0, 0.3),
+);
+
+//Each
+@each $name, $value in $map {
+  .bg-#{$name} {
+    background-color: $value;
+  }
+}
+
+//Extend
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// General reset
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+}
+
+//Nav settings
+nav {
+  div {
+    div {
+      ul {
+        li {
+          a {
+            font-size: 1rem !important;
+            font-weight: 700 !important;
+            transition: 0.2s ease-in-out !important;
+            &:hover {
+              color: $main-color-one !important;
+              text-decoration: underline !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+//Hero settings
+.hero {
+  width: 100%;
+  height: 50vh;
+  background: url(../img/carousel2.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  @extend %flex-center;
+  h1 {
+    color: $main-color-two;
+    font-size: 5.5rem;
+  }
+  .row {
+    background-color: rgba(0, 0, 0, 0.5);
+    height: 50vh;
+    width: 100%;
+  }
+}
+
+//Index page
+.index-content {
+  a {
+    color: $main-color-one;
+    transition: 0.15s ease-in;
+    text-decoration: none;
+    &:hover {
+      color: $main-color-two;
+      text-decoration: underline;
+    }
+  }
+}
+
+//Nosotros page
+.nosotros-content {
+  h4 {
+    a {
+      text-decoration: underline;
+      color: #000000;
+      font-size: 1.4rem;
+      &:hover {
+        color: $main-color-one;
+      }
+    }
+  }
+}
+
+//Promociones page
+.promo-title {
+  h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-decoration: underline;
+  }
+}
+
+//Productos page
+.nav-products {
+  display: none;
+}
+
+.card-m5 {
+  margin: 10px;
+  border: 1px solid $main-color-one;
+}
+
+.separador {
+  background-color: $alpha-color-two;
+  width: 100%;
+  height: 20px;
+}
+
+.btn-primary {
+  background-color: $main-color-one;
+  color: #000000;
+  border: .5px solid $main-color-one;
+  transition: 100ms ease-in;
+}
+
+.btn-primary:hover {
+  background-color: $alpha-color-two;
+  color: #000000;
+  border: .5px solid $main-color-two;
+  transform: scale(1.05);
+}
+
+.carro-title {
+  margin-top: 30px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: #000000;
+  background-color: $main-color-two;
+  padding: 20px;
+}
+
+
+//Contacto page
+#contact-section {
+  div {
+    div {
+      iframe {
+        min-width: 100%;
+        min-height: 350px;
+        margin-top: 1rem;
+      }
+    }
+  }
+}
+
+#h5-redes {
+  background-color: $main-color-two;
+  width: 100%;
+}
+
+.div-svg {
+  @extend %flex-center;
+  width: 100%;
+  a {
+    text-decoration: none;
+    padding: 1.5rem;
+    padding-top: 0;
+    svg {
+      width: 70px;
+      height: 70px;
+      color: $main-color-one;
+      transition: 0.2s ease-out;
+      &:hover {
+        @include transformar(scale(1.2));
+        color: #000000;
+      }
+    }
+  }
+}
+
+//Products Price Color
+#products-cards {
+  h3 {
+    color: #ff00eb;
+  }
+}
+
+#products-cards {
+  h4 {
+    max-width: 100%;
+    max-height: 40px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  #products-cards {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .card-m5 {
+    margin: 10px;
+    border: 1px solid $main-color-one;
+  }
+
+  .separador {
+    height: 35px;
+  }
+
+  #carrito-cards {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 992px) {
+  nav {
+    div {
+      div {
+        ul {
+          width: 100% !important;
+          display: flex !important;
+          justify-content: flex-end !important;
+          li {
+            padding-left: 2rem !important;
+          }
+        }
+      }
+    }
+  }
+
+  nav {
+    div {
+      a {
+        transition: 0.2s ease-in;
+        &:hover {
+          @include transformar(scale(1.2));
+        }
+      }
+    }
+  }
+
+  .nav-products {
+    display: block;
+    div {
+      div {
+        ul {
+          width: 100% !important;
+          display: flex !important;
+          justify-content: space-evenly !important;
+          li {
+            padding-left: 2rem !important;
+          }
+        }
+      }
+    }
+  }
+
+  .nav-products {
+    div {
+      a {
+        transition: 0.2s ease-in;
+        &:hover {
+          @include transformar(scale(1.2));
+        }
+      }
+    }
+  }
+
+  #products-carousel {
+    max-width: 100%;
+    height: 60vh;
+    overflow: hidden;
+    button {
+      display: none;
+    }
+  }
+
+  #products-cards {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      div {
+        width: 100%;
+        div {
+          img {
+            max-width: 250px;
+            max-height: 250px;
+          }
+        }
+      }
+    }
+  }
+
+  .card-m5 {
+    margin: 10px;
+    border: 1px solid $main-color-one;
+  }
+
+  .separador {
+    height: 35px;
+  }
+
+  #carrito-cards {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr 1fr;
+  
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+      div {
+        width: 100%;
+  
+        div {
+          img {
+            max-width: 250px;
+            max-height: 250px;
+          }
+        }
+      }
+    }
+  }
+}
