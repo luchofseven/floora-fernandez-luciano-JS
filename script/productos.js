@@ -100,6 +100,7 @@ const products = [
     price: 300
   }
 ]
+
 const productsEnCarrito = []
 
 const divProducts = document.querySelector("#div-products")
@@ -109,12 +110,12 @@ const divCarrito = document.querySelector("#carrito")
 const divCarritoRow = document.querySelector("#carrito-row")
 const divCarritoCard = document.querySelector("#carrito-cards")
 
-
 //Eventos
 
 document.addEventListener('DOMContentLoaded', () => {
   mostrarProductos()
 })
+
 
 //Funciones
 
@@ -229,12 +230,11 @@ function mostrarCarrito(carrito) {
 
     const button = document.createElement('button')
     button.type = 'button'
-    button.className = 'btn btn-primary btn-add'
-    button.textContent = "Agregar al carrito"
+    button.className = 'btn btn-danger'
+    button.textContent = "Eliminar del carrito"
     button.onclick = () => {
-      agregarProducto(product.id)
+      eliminarProducto(product.id)
     }
-
   
     divCardBody.appendChild(cardTitle)
     divCardBody.appendChild(cardText)
@@ -254,4 +254,11 @@ function mostrarCarrito(carrito) {
     divCarritoRow.appendChild(divCarritoCard)
     divCarrito.appendChild(divCarritoRow)
   })
+}
+
+function eliminarProducto(id) {
+  console.log(id)
+  const productoEliminado = products.find(product => product.id === id)
+  productsEnCarrito.splice(productoEliminado, 1)
+  mostrarCarrito(productsEnCarrito)
 }

@@ -145,6 +145,13 @@ nav {
   transform: scale(1.05);
 }
 
+.btn-primary:focus {
+  background-color: $alpha-color-two;
+  color: #000000;
+  border: .5px solid $main-color-two;
+  transform: scale(1.05);
+}
+
 .carro-title {
   margin-top: 30px;
   font-weight: bold;
@@ -154,6 +161,16 @@ nav {
   padding: 20px;
 }
 
+// #button-cart {
+//   position: fixed;
+//   height: 50px;
+//   width: 50px;
+//   background-color: $main-color-two;
+//   top: 50vh;
+//   right: 0;
+//   border: .5px solid black;
+//   border-radius: 50%;
+// }
 
 //Contacto page
 #contact-section {

@@ -115,6 +115,13 @@ nav div div ul li a:hover {
   transform: scale(1.05);
 }
 
+.btn-primary:focus {
+  background-color: rgba(198, 255, 0, 0.3);
+  color: #000000;
+  border: 0.5px solid #c6ff00;
+  transform: scale(1.05);
+}
+
 .carro-title {
   margin-top: 30px;
   font-weight: bold;
