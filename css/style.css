@@ -131,6 +131,11 @@ nav div div ul li a:hover {
   padding: 20px;
 }
 
+.img-fluid {
+  width: 100%;
+  height: 100%;
+}
+
 #contact-section div div iframe {
   min-width: 100%;
   min-height: 350px;
