@@ -101,7 +101,12 @@ const products = [
   }
 ]
 
-const productsEnCarrito = []
+let productsEnCarrito = localStorage.getItem("carrito")
+if (productsEnCarrito === null) {
+  productsEnCarrito = []
+} else {
+  productsEnCarrito = JSON.parse(productsEnCarrito)
+}
 
 const divProducts = document.querySelector("#div-products")
 const divProductsRow = document.querySelector("#div-products-row")
@@ -116,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
   mostrarProductos()
 })
 
+mostrarCarrito(productsEnCarrito)
 
 //Funciones
 
@@ -187,6 +193,8 @@ function mostrarProductos() {
 function agregarProducto(id) {
   const productosAgregados = products.find(products => products.id === id)
   productsEnCarrito.push(productosAgregados)
+  let carritoJson = JSON.stringify(productsEnCarrito)
+  localStorage.setItem("carrito", carritoJson)
   mostrarCarrito(productsEnCarrito)
 }
 
@@ -260,5 +268,7 @@ function eliminarProducto(id) {
   console.log(id)
   const productoEliminado = products.find(product => product.id === id)
   productsEnCarrito.splice(productoEliminado, 1)
+  let carritoJson = JSON.stringify(productsEnCarrito)
+  localStorage.setItem("carrito", carritoJson)
   mostrarCarrito(productsEnCarrito)
 }
