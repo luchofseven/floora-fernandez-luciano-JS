@@ -102,11 +102,9 @@ const products = [
 ]
 
 let productsEnCarrito = localStorage.getItem("carrito")
-if (productsEnCarrito === null) {
-  productsEnCarrito = []
-} else {
-  productsEnCarrito = JSON.parse(productsEnCarrito)
-}
+
+productsEnCarrito === null ? productsEnCarrito = [] : productsEnCarrito = JSON.parse(productsEnCarrito)
+
 
 const divProducts = document.querySelector("#div-products")
 const divProductsRow = document.querySelector("#div-products-row")
@@ -166,6 +164,14 @@ function mostrarProductos() {
     button.textContent = "Agregar al carrito"
     button.onclick = () => {
       agregarProducto(product.id)
+      Toastify({
+        text: "¡Producto agregado!",
+        duration: 2000,
+        className: "info",
+        style: {
+        background: "yellowgreen",
+        }
+      }).showToast();
     }
 
   
@@ -242,6 +248,14 @@ function mostrarCarrito(carrito) {
     button.textContent = "Eliminar del carrito"
     button.onclick = () => {
       eliminarProducto(product.id)
+      Toastify({
+        text: "¡Producto eliminado!",
+        duration: 2000,
+        className: "btn btn-danger",
+        style: {
+        background: "red",
+        }
+      }).showToast();
     }
   
     divCardBody.appendChild(cardTitle)
@@ -265,7 +279,6 @@ function mostrarCarrito(carrito) {
 }
 
 function eliminarProducto(id) {
-  console.log(id)
   const productoEliminado = products.find(product => product.id === id)
   productsEnCarrito.splice(productoEliminado, 1)
   let carritoJson = JSON.stringify(productsEnCarrito)
