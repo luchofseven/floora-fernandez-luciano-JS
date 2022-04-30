@@ -101,7 +101,7 @@ const products = [
   }
 ]
 
-let productsEnCarrito = localStorage.getItem("carrito")
+productsEnCarrito = localStorage.getItem("carrito")
 
 productsEnCarrito === null ? productsEnCarrito = [] : productsEnCarrito = JSON.parse(productsEnCarrito)
 
@@ -247,7 +247,7 @@ function mostrarCarrito(carrito) {
     button.className = 'btn btn-danger'
     button.textContent = "Eliminar del carrito"
     button.onclick = () => {
-      eliminarProducto(product.id)
+      eliminarProducto(product.id, carrito)
       Toastify({
         text: "¡Producto eliminado!",
         duration: 2000,
@@ -279,7 +279,7 @@ function mostrarCarrito(carrito) {
 }
 
 function eliminarProducto(id) {
-  const productoEliminado = products.find(product => product.id === id)
+  const productoEliminado = productsEnCarrito.findIndex(product => product.id === id)
   productsEnCarrito.splice(productoEliminado, 1)
   let carritoJson = JSON.stringify(productsEnCarrito)
   localStorage.setItem("carrito", carritoJson)
