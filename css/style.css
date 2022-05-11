@@ -86,10 +86,6 @@ nav div div ul li a:hover {
   text-decoration: underline;
 }
 
-.nav-products {
-  display: none;
-}
-
 .card-m5 {
   margin: 10px;
   border: 1px solid #ff99ec;
@@ -129,11 +125,6 @@ nav div div ul li a:hover {
   color: #000000;
   background-color: #c6ff00;
   padding: 20px;
-}
-
-.img-fluid {
-  width: 100%;
-  height: 100%;
 }
 
 .h5-cantidad {
